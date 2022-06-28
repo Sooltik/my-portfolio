@@ -1,0 +1,225 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --ff-primary: "Lora", serif;
+    --ff-secondary: "Roboto Slab", serif;
+
+    --fw-reg: 400;
+    --fw-bold: 700;
+
+    --clr-light: #fff;
+    --clr-dark: #303030;
+    --clr-accent: #212B57;
+
+    --fs-h1: 3rem;
+    --fs-h2: 2.25rem;
+    --fs-h3: 1.25rem;
+    --fs-body: 1rem;
+
+    --bs: 0.25em 0.25em 0.75em rgba(0, 0, 0, 25),
+        0.125em 00.125em 0.25em rgba(0, 0, 0, 15);
+}
+
+@media (min-width: 800px) {
+    :root {
+        --fs-h1: 4.5rem;
+        --fs-h2: 3.75rem;
+        --fs-h3: 2.5rem;
+        --fs-body: 1.125rem;
+    }
+}
+
+/* General styles */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--clr-light);
+    color: var(--clr-dark);
+    margin: 0;
+    font-family: var(--ff-primary);
+    font-size: var(--fs-body);
+    line-height: 1.6;
+}
+
+section {
+    padding: 8em 2em;
+}
+
+strong {
+    font-weight: var(--fw-bold);
+}
+
+/* Typography */
+
+h1,
+h2,
+h3 {
+    line-height: 1.1;
+}
+
+h1 {
+    font-size: var(--fs-h1);
+}
+
+h2 {
+    font-size: var(--fs-h2);
+}
+
+h3 {
+    font-size: var(--fs-h3);
+}
+
+i {
+    font-size: 20px
+}
+
+/* Header */
+
+header {
+    display: inline;
+    justify-content: space-between;
+}
+
+.nav {
+    background-color: var(--clr-light);
+    position: fixed;
+    width: 100%;
+}
+
+.nav a {
+    color: var(--clr-accent);
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.nav a:hover {
+    background-color: var(--clr-dark);
+    color: var(--clr-light);
+}
+
+.nav_list a {
+    float: none;
+}
+
+.nav_item {
+    display: inline;
+    padding-left: 20%;
+}
+
+/* Intro Section */
+
+.intro_title {
+    margin-bottom: 0.25em;
+    font-weight: var(--fw-reg);
+    padding-left: 1em;
+}
+
+.intro_title strong {
+    display: block;
+    color: var(--clr-accent);
+}
+
+.intro_subtitle {
+    margin: 0;
+    font-size: var(--fs-h3);
+    padding-left: 1.8em;
+}
+
+.intro_img {
+    float: right;
+    margin-top: -12em;
+    padding-right: 4em;
+}
+
+/* About Me Section */
+
+.about_me_title {
+    padding-left: 50%;
+}
+
+.about_me_text {
+    padding-left: 50%;
+}
+
+.about_me_img {
+    float: left;
+    margin-top: -25rem;
+}
+
+/* Button Download CV */
+.btn_cv {
+    background-color: transparent;
+    border: 1px solid var(--clr-accent);
+    box-sizing: border-box;
+    color: var(--clr-light);
+    font-family: "Avenir Next LT W01 Bold", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    padding: 16px 23px;
+    position: absolute;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin-left: 50%;
+}
+
+.btn_cv:hover,
+.btn_cv:active {
+    outline: 0;
+}
+
+.btn_cv:hover {
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.btn_cv:before {
+    background-color: #42C9FF;
+    content: "";
+    height: calc(100% + 3px);
+    position: absolute;
+    right: -7px;
+    top: -9px;
+    transition: background-color 300ms ease-in;
+    width: 100%;
+    z-index: -1;
+}
+
+.btn_cv:hover:before {
+    background-color: #625BF9;
+}
+
+@media (min-width: 768px) {
+    .btn_cv {
+        padding: 16px 32px;
+    }
+}
+
+/* What I Do Section */
+
+.skills {
+    margin-top: -10em;
+}
+
+.skills_title{
+    padding-left: 0.5em;
+}
+.my_skills{
+    padding-left: 2em;
+}
+
+.my_skills img {
+    display: inline-block;
+    max-width: 200px;
+    margin-left: 25px;
+}
