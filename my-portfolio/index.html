@@ -2,106 +2,147 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sultan Niazov | Full Stack Developer</title>
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Fonts-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
-        integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Roboto+Slab:400,700&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+    integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+
+  <!-- Fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Roboto+Slab:400,700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
+  <header>
+    <!-- <div class="logo">
+      <img src="img/sign.png" alt="" />
+    </div> -->
+    <button class="nav-toggle" aria-label="toggle navigation">
+      <span class="hamburger"></span>
+    </button>
+    <nav class="nav">
+      <ul class="nav__list">
+        <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
+        <li class="nav__item">
+          <a href="#services" class="nav__link">My Services</a>
+        </li>
+        <li class="nav__item">
+          <a href="#about" class="nav__link">About me</a>
+        </li>
+        <!-- <li class="nav__item">
+          <a href="#work" class="nav__link">My work</a>
+        </li> -->
+      </ul>
+    </nav>
+  </header>
 
-    <!--Header-->
-    <Header>
-        <!-- Navigation bar -->
-        <nav class="nav">
-            <ul class="nav_list">
-                <li class="nav_item"><a href="#home" class="nav_link">Home</a></li>
-                <li class="nav_item"><a href="#about-me" class="nav_link">About Me</a></li>
-                <li class="nav_item"><a href="#mySkills" class="nav_link">My Skills</a></li>
-            </ul>
-        </nav>
-    </Header>
+  <!-- Introduction-->
+  <section class="intro" id="home">
+    <h1 class="section__title section__title--intro">
+      Hi, I am <strong> Sultan Niazov</strong>
+    </h1>
+    <p class="section__subtitle section__subtitle--intro">
+      Développeur logiciel /Software Developer
+    </p>
+    <img src="img/intro-pic.png" alt="Sultan Profile Intro" class="intro__img" />
+  </section>
 
-    <!-- Introduction -->
-    <section class="intro" id="home">
-        <h1 class="intro_title">Hello, I am <strong>Sultan Niazov</strong></h1>
-        <h2 class="intro_subtitle">Full Stack Developer</h2>
-        <img src="img/intro_img.png" alt="person on computer" class="intro_img">
-    </section>
+  <!-- My Services-->
+  <section class="my-services" id="services">
+    <h2 class="section__title section__title--services">What I do</h2>
+    <div class="services">
+      <!-- service-->
+      <div class="service">
+        <h3>Web Technologies</h3>
+        <p>JavaScript, HTML5/CSS3, ReactJS, Vue.js, Vuetify</p>
+      </div>
+      <!-- services-->
+      <div class="service">
+        <h3>Programming Languages</h3>
+        <p>Java, Python, C++, C#</p>
+      </div>
+      <!-- service-->
+      <div class="service">
+        <h3>RDBMS & Other</h3>
+        <p>SQL, Git, Nodejs, Express, API, Agile, Wordpress </p>
+      </div>
+    </div>
+    <a href="./public/Sultan_Niazov_Resume.docx" download="Sultan_Niazov_Resume.docx" class="download"><button  class="btn" role="button">Download Resume</button></a>
+  </section>
 
-    <!-- About Me -->
-    <section class="about_me" id="about-me">
-        <h1 class="about_me_title">Who I Am</h1>
-        <p class="about_me_text">I love exploring and learning! Constantly seeking for new knowledge, I am an ambitious
-            developer familiar with a variety of programming
-            languages. I have extensive knowledge of <strong>Object-Oriented Programming and
-                Web Technologies</strong> and combining with my love for design and my problem-solving passion, I am
-            seeking out new technologies and staying up-to-date on trends in the industry.</p>
-        <p class="about_me_text">Currently I am searching for a challenging internship position to
-            expand my experiences and improve my skills. </p>
-        <img src="img/about_me.jpg" alt="about me" class="about_me_img">
-        <a href="./public/Sultan_Niazov_Resume.docx" download="Sultan_Niazov_Resume.docx" class="download"><button class="btn_cv" role="button">Download CV</button></a>
+  <!-- About me -->
+  <section class="about-me" id="about">
+    <h2 class="section__title section__title--about">Who I am</h2>
+    <p class="section__subtitle section__subtitle--about">
+      Designer & Developer
+    </p>
 
+    <div class="about-me__body">
+      <p>
+        I love exploring and learning! Constantly seeking for new knowledge, I am an ambitious
+        developer familiar with a variety of programming
+        languages. I have extensive knowledge of <strong>Object-Oriented Programming and
+          Web Technologies</strong> and combining with my love for design and my problem-solving passion, I am
+        seeking out new technologies and staying up-to-date on trends in the industry.
+      </p>
+      <p>
+        Currently I am searching for a challenging internship position to
+        expand my experiences and improve my skills.
+      </p>
+    </div>
+    <img src="img/about-me-pic.png" alt="Sultan Profile About Me" class="about-me__img" />
+  </section>
 
-    </section>
+  <!-- My work -->
+  <!-- <section class="my-work" id="work">
+    <h2 class="section__title section__title--work">My work</h2>
+    <p class="section__subtitle section__subtitle--work">
+      A selection of my range of work
+    </p> -->
 
-    <!-- My Skills -->
-    <section class="skills" id="mySkills">
-        <h1 class="skills_title">What I Do</h1>
-        <div class="my_skills">
-            <div class="web_skills">
-                <h3>Web Technologies</h3>
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain-wordmark.svg" />
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain-wordmark.svg" />
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg" />
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg" />
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original-wordmark.svg" />
+    <!-- <div class="portfolio"> -->
+      <!-- Portfolio item 01 -->
+      <!-- <a href="portfolio-item1.html" class="portfolio__item">
+        <img src="img/portfolio-01.jpg" alt="" class="portfolio__img" />
+      </a> -->
 
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" />
-            </div>
-            <div class="prog_skills">
-                <h3>Programming Languages</h3>
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original-wordmark.svg" />
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" />
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg" />
-            </div>
-            <div class="other_skills">
-                <h3>RDBMS & Other</h3>
-                <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain-wordmark.svg" />
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg" />
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original-wordmark.svg" />
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg" />
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original-wordmark.svg" />
+      <!-- Portfolio item 02 -->
+      <!-- <a href="portfolio-item2.html" class="portfolio__item">
+        <img src="img/portfolio-02.jpg" alt="" class="portfolio__img" />
+      </a> -->
 
-            </div>
+      <!-- Portfolio item 03 -->
+      <!-- <a href="portfolio-item3.html" class="portfolio__item">
+        <img src="img/portfolio-03.jpg" alt="" class="portfolio__img" />
+      </a> -->
 
-        </div>
-    </section>
+      <!-- Portfolio item 04 -->
+      <!-- <a href="portfolio-item4.html" class="portfolio__item">
+        <img src="img/portfolio-04.jpg" alt="" class="portfolio__img" />
+      </a>
+    </div>
+  </section> -->
 
-    <!-- My Projects -->
-
-    <!--Footer-->
-    <!-- Footer -->
-    <footer class="footer">
-        <h2 class="footer_title">Get in touch</h2>
-        <a href="mailto:niazov.sultan@gmail.com" class="footer__link">niazov.sultan@gmail.com
-            <div>
-                <a href="https://github.com/Sooltik"><i class="fa fa-github" style="font-size:36px"></i></a>
-                <a href="https://www.linkedin.com/in/sultan-niazov/"><i class="fa fa-linkedin"
-                        style="font-size:36px"></i></a>
-            </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <a href="mailto:niazov.sultan@gmail.com" class="footer__link">niazov.sultan@gmail.com
+    </a>
+    <ul clas="social-list">
+      <ul class="social-list__item">
+        <a class="social-list__link" href="https://www.linkedin.com/in/sultan-niazov/">
+          <i class="fab fa-linkedin"></i>
         </a>
-    </footer>
+      </ul>
+      <ul class="social-list__item">
+        <a class="social-list__link" href="https://github.com/Sooltik"><i class="fab fa-github"></i></a>
+      </ul>
+    </ul>
+  </footer>
 
+  <script src="js/index.js"></script>
 </body>
 
 </html>
