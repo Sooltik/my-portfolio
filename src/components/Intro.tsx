@@ -5,10 +5,10 @@ const Intro: React.FC = () => {
   return (
     <section className="intro" id="home">
       <h1 className="section__title section__title--intro">
-        Hi, I am <strong>Sultan Niazov</strong>
+        <span className="intro-title">Hello, my name is</span> <strong>Sultan Niazov</strong>
       </h1>
       <p className="section__subtitle section__subtitle--intro">
-        Web & Software Developer
+        <span className="intro-subtitle">Web & Software Developer</span>
       </p>
       <img src="/img/about-me-pic.jpeg" alt="Sultan Profile Intro" className="intro__img" />
     </section>
