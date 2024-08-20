@@ -5,48 +5,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sultan Niazov | Full Stack Developer</title>
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
-    integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
-  <link rel="icon" href="img/icon.png">
-  <!-- Fonts-->
-  <link href="//fonts.googleapis.com/css?family=Lora:400,700|Roboto+Slab:400,700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/style.css" />
+  <!-- Normalize CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+    integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="img/icon.png">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Roboto+Slab:400,700&display=swap" rel="stylesheet" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <header>
-    <!-- TODO: Change Logo -->
-    <!-- <div class="logo">
-      <img src="img/logo.png" alt="logo" />
-    </div> -->
-    <button class="nav-toggle" aria-label="toggle navigation">
-      <span class="hamburger"></span>
-    </button>
-    <nav class="nav">
-      <ul class="nav__list">
-        <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
-        <li class="nav__item">
-          <a href="#services" class="nav__link">My Services</a>
-        </li>
-        <li class="nav__item">
-          <a href="#about" class="nav__link">About me</a>
-        </li>
-        <!-- <li class="nav__item">
-          <a href="#work" class="nav__link">My work</a>
-        </li> -->
-      </ul>
-    </nav>
-  </header>
 
   <!-- Introduction-->
   <section class="intro" id="home">
     <h1 class="section__title section__title--intro">
-      Hi, I am <strong> Sultan Niazov</strong>
+      <span class="intro-title">Hello, my name is</span> <strong>Sultan Niazov</strong>
     </h1>
     <p class="section__subtitle section__subtitle--intro">
-      Web & Software Developer
+      <span class="intro-subtitle">Web & Software Developer</span>
     </p>
     <img src="img/intro-pic.png" alt="Sultan Profile Intro" class="intro__img" />
   </section>
@@ -77,7 +62,7 @@
   <section class="about-me" id="about">
     <h2 class="section__title section__title--about">Who I am</h2>
     <p class="section__subtitle section__subtitle--about">
-      Full Stack Developer
+      <span class="intro-subtitle">Full Stack Developer</span>
     </p>
 
     <div class="about-me__body">
@@ -92,53 +77,23 @@
     <img src="img/about-me-pic.jpeg" alt="Sultan Profile About Me" class="about-me__img" />
   </section>
 
-  <!-- My work -->
-  <!-- <section class="my-work" id="work">
-    <h2 class="section__title section__title--work">My work</h2>
-    <p class="section__subtitle section__subtitle--work">
-      A selection of my range of work
-    </p> -->
-
-  <!-- <div class="portfolio"> -->
-  <!-- Portfolio item 01 -->
-  <!-- <a href="portfolio-item1.html" class="portfolio__item">
-        <img src="img/portfolio-01.jpg" alt="" class="portfolio__img" />
-      </a> -->
-
-  <!-- Portfolio item 02 -->
-  <!-- <a href="portfolio-item2.html" class="portfolio__item">
-        <img src="img/portfolio-02.jpg" alt="" class="portfolio__img" />
-      </a> -->
-
-  <!-- Portfolio item 03 -->
-  <!-- <a href="portfolio-item3.html" class="portfolio__item">
-        <img src="img/portfolio-03.jpg" alt="" class="portfolio__img" />
-      </a> -->
-
-  <!-- Portfolio item 04 -->
-  <!-- <a href="portfolio-item4.html" class="portfolio__item">
-        <img src="img/portfolio-04.jpg" alt="" class="portfolio__img" />
-      </a>
-    </div>
-  </section> -->
-
   <!-- Footer -->
   <footer class="footer">
     <a href="mailto:niazov.sultan@gmail.com" class="footer__link">niazov.sultan@gmail.com
     </a>
-    <ul clas="social-list">
-      <ul class="social-list__item">
-        <a class="social-list__link" href="//www.linkedin.com/in/sultan-niazov/">
+    <ul class="social-list">
+      <li class="social-list__item">
+        <a class="social-list__link" href="https://www.linkedin.com/in/sultan-niazov/">
           <i class="fab fa-linkedin"></i>
         </a>
-      </ul>
-      <ul class="social-list__item">
-        <a class="social-list__link" href="//github.com/Sooltik"><i class="fab fa-github"></i></a>
-      </ul>
+      </li>
+      <li class="social-list__item">
+        <a class="social-list__link" href="https://github.com/Sooltik"><i class="fab fa-github"></i></a>
+      </li>
     </ul>
   </footer>
 
-  <script src="js/index.js"></script>
+  <script src="/path/to/bundle.js"></script>
 </body>
 
 </html>
