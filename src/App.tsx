@@ -3,7 +3,6 @@ import Intro from './components/Intro';
 import MyServices from './components/MyServices';
 import AboutMe from './components/AboutMe';
 import Footer from './components/Footer';
-import './assets/styles/style.css';
 
 const App: React.FC = () => {
   return (
