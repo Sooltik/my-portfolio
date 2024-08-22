@@ -16,7 +16,7 @@ why I'm probably the one you want to work with
 
 ## Why Should You Care? 🤷‍♂️
 
-Well, you’ve made it this far, so something must have caught your eye. Whether you’re looking for a developer for your next big corporate project or just someone for a personal website, you’re in the right place.
+Whether you’re looking for a developer for your next big corporate project or just someone for a personal website, you’re in the right place.
 
 ## Check it out live! 👀
 [Visit Portfolio](https://sultanniazov.com/)
