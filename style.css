@@ -46,7 +46,7 @@ body {
   font-family: var(--ff-primary);
   font-size: var(--fs-body);
   line-height: 1.6;
-  cursor: url('img/pointer.png'), auto;
+  cursor: url('img/cursor.png'), auto;
 }
 
 section {
@@ -56,9 +56,6 @@ section {
 img {
   display: block;
   max-width: 100%;
-}
-img:hover {
-  transform: scale(1.1);
 }
 
 strong {
@@ -451,7 +448,6 @@ body {
   font-family: var(--ff-primary);
   font-size: var(--fs-body);
   line-height: 1.6;
-  cursor: url('path-to-cursor.png'), auto;
 }
 
 section {
