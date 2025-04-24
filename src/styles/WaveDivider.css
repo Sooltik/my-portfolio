@@ -1,0 +1,54 @@
+.wave-divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 4;
+  }
+  
+  .wave-divider svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 150px;
+  }
+  
+  .wave-divider .wave {
+    fill: var(--shallow);
+  }
+  
+  .wave-animation {
+    animation: waveMove 15s linear infinite;
+  }
+  
+  .wave-animation-delayed {
+    animation: waveMove 15s linear infinite;
+    animation-delay: -5s;
+  }
+  
+  @keyframes waveMove {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .wave-divider svg {
+      height: 100px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .wave-divider svg {
+      height: 70px;
+    }
+  }

@@ -1,0 +1,230 @@
+.surface-layer {
+    background: linear-gradient(180deg, var(--surface) 0%, var(--shallow) 100%);
+    z-index: 5;
+    overflow: hidden;
+    position: relative;
+    min-height: 100vh;
+  }
+  
+  .surface-objects {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  
+  /* Cloud styles */
+  .cloud {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    width: 80px;
+    height: 40px;
+    animation: float 20s infinite linear;
+    opacity: 0.8;
+    z-index: 1;
+  }
+  
+  .cloud:nth-child(1) {
+    top: 15%;
+    left: 10%;
+    width: 100px;
+    height: 50px;
+    animation-duration: 45s;
+  }
+  
+  .cloud:nth-child(2) {
+    top: 25%;
+    left: 70%;
+    width: 140px;
+    height: 70px;
+    animation-duration: 55s;
+  }
+  
+  .cloud:nth-child(3) {
+    top: 10%;
+    left: 40%;
+    width: 120px;
+    height: 60px;
+    animation-duration: 50s;
+  }
+  
+  .cloud:nth-child(4) {
+    top: 18%;
+    left: 85%;
+    width: 110px;
+    height: 55px;
+    animation-duration: 48s;
+  }
+  
+  .cloud:nth-child(5) {
+    top: 5%;
+    left: 25%;
+    width: 90px;
+    height: 45px;
+    animation-duration: 52s;
+  }
+  
+  .cloud:nth-child(6) {
+    top: 30%;
+    left: 60%;
+    width: 80px;
+    height: 40px;
+    animation-duration: 58s;
+  }
+  
+  /* Water creatures */
+  .water-creatures {
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+  }
+  
+  .small-fish {
+    position: absolute;
+    opacity: 0.7;
+    transform-origin: center;
+  }
+  
+  .small-fish:nth-child(1) {
+    bottom: 40px;
+    left: 15%;
+    animation: swimFish 25s infinite linear;
+  }
+  
+  .small-fish:nth-child(2) {
+    bottom: 100px;
+    left: 45%;
+    animation: swimFish 35s infinite linear;
+    animation-delay: 3s;
+  }
+  
+  .small-fish:nth-child(3) {
+    bottom: 170px;
+    left: 75%;
+    animation: swimFish 28s infinite linear;
+    animation-delay: 7s;
+  }
+  
+  /* Wave Divider */
+  .wave-divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 4;
+  }
+  
+  .wave-divider svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 150px;
+  }
+  
+  .wave-divider .wave {
+    fill: var(--shallow);
+  }
+  
+  .wave-animation {
+    animation: waveMove 15s linear infinite;
+  }
+  
+  .wave-animation-delayed {
+    animation: waveMove 15s linear infinite;
+    animation-delay: -5s;
+  }
+  
+  /* Animations */
+  @keyframes float {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(100vw + 100px));
+    }
+  }
+  
+  @keyframes swimFish {
+    0% {
+      transform: translateX(0) translateY(0) scaleX(1);
+    }
+    25% {
+      transform: translateX(200px) translateY(-30px) scaleX(1);
+    }
+    49% {
+      transform: translateX(400px) translateY(0) scaleX(1);
+    }
+    50% {
+      transform: translateX(400px) translateY(0) scaleX(-1);
+    }
+    75% {
+      transform: translateX(200px) translateY(30px) scaleX(-1);
+    }
+    100% {
+      transform: translateX(0) translateY(0) scaleX(-1);
+    }
+  }
+  
+  @keyframes waveMove {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  /* Layer content container */
+  .layer-content {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+    border-radius: 1rem;
+  }
+  
+  /* Responsive adjustments for surface layer */
+  @media (max-width: 768px) {
+    .wave-divider svg {
+      height: 100px;
+    }
+    
+    .small-fish {
+      transform: scale(0.7);
+    }
+    
+    .cloud:nth-child(4),
+    .cloud:nth-child(5),
+    .cloud:nth-child(6) {
+      opacity: 0.6;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .wave-divider svg {
+      height: 70px;
+    }
+    
+    .cloud:nth-child(3),
+    .cloud:nth-child(5) {
+      display: none;
+    }
+    
+    .small-fish:nth-child(3) {
+      display: none;
+    }
+  }
