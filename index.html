@@ -40,6 +40,8 @@
       --abyss: #001933;
       --text-light: #FFFFFF;
       --accent: #FF7043;
+      --sand: #f0e68c;
+      --island-green: #2e8b57;
 
       --fs-h1: 3rem;
       --fs-h2: 2.25rem;
@@ -142,6 +144,12 @@
 
     ::-webkit-scrollbar-thumb:hover {
       background: #FF8A65;
+    }
+
+    @media (max-width: 768px) {
+      ::-webkit-scrollbar {
+        display: none;
+      }
     }
 
     /* Typography */
@@ -429,7 +437,7 @@
     .layer-content {
       max-width: 1200px;
       width: 100%;
-      margin: 0 auto;
+      margin: 0;
       position: relative;
       z-index: 2;
       padding: 2rem;
@@ -440,6 +448,9 @@
     .surface-layer {
       background: linear-gradient(180deg, var(--surface) 0%, var(--shallow) 100%);
       z-index: 5;
+      overflow: hidden;
+      position: relative;
+      min-height: 100vh;
     }
 
     .surface-objects {
@@ -449,19 +460,358 @@
       top: 0;
       left: 0;
       pointer-events: none;
+      overflow: hidden;
     }
 
-    .surface-wave {
+    /* Island Profile Container Styles */
+    .island-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .island {
+      position: relative;
+      background-color: var(--sand);
+      width: 500px;
+      height: 260px;
+      border-radius: 50% 50% 45% 45%;
+      margin-top: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      overflow: visible;
+      z-index: 2;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .island-top {
+      position: absolute;
+      background-color: var(--island-green);
+      width: 450px;
+      height: 200px;
+      border-radius: 50% 50% 45% 45%;
+      top: -30px;
+      left: 25px;
+      box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+
+    /* Palm Trees */
+    .palm-tree {
+      position: absolute;
+      z-index: 3;
+    }
+
+    .palm-tree.left {
+      top: -80px;
+      left: 40px;
+      transform: rotate(-15deg) scale(0.7);
+    }
+
+    .palm-tree.right {
+      top: -90px;
+      right: 50px;
+      transform: rotate(10deg) scale(0.8);
+    }
+
+    .palm-trunk {
+      width: 20px;
+      height: 100px;
+      background: linear-gradient(90deg, #8B4513 20%, #A0522D 50%, #8B4513 80%);
+      border-radius: 10px;
+      transform: rotate(10deg);
+      position: relative;
+    }
+
+    .palm-leaves {
+      position: absolute;
+      top: -20px;
+      left: -30px;
+    }
+
+    .palm-leaf {
+      position: absolute;
+      width: 100px;
+      height: 40px;
+      background-color: var(--island-green);
+      border-radius: 100% 0 0 0 / 100% 0 0 0;
+      transform-origin: right center;
+    }
+
+    .palm-leaf:nth-child(1) {
+      transform: rotate(-20deg) translateX(-20px);
+    }
+
+    .palm-leaf:nth-child(2) {
+      transform: rotate(20deg) translateX(-10px) translateY(10px);
+    }
+
+    .palm-leaf:nth-child(3) {
+      transform: rotate(60deg) translateX(0) translateY(20px);
+    }
+
+    .palm-leaf:nth-child(4) {
+      transform: rotate(100deg) translateX(10px) translateY(20px);
+    }
+
+    .palm-leaf:nth-child(5) {
+      transform: rotate(140deg) translateX(15px) translateY(10px);
+    }
+
+    .palm-leaf:nth-child(6) {
+      transform: rotate(180deg) translateX(10px) translateY(0);
+    }
+
+    /* Profile Picture */
+    .profile-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin-bottom: 0;
+      margin-top: -40px;
+      border-radius: 50%;
+      overflow: visible;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .profile-outline {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2), var(--accent));
+      animation: rotate 10s linear infinite;
+      z-index: 1;
+      filter: blur(5px);
+    }
+
+    .profile-pic {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+        inset 0 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 2;
+      transition: all 0.3s ease;
+    }
+
+    .profile-container:hover .profile-pic {
+      transform: scale(1.05);
+      border-color: var(--accent);
+    }
+
+    .profile-shine {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg,
+          rgba(255, 255, 255, 0.3) 0%,
+          rgba(255, 255, 255, 0) 50%,
+          rgba(255, 255, 255, 0) 100%);
+      border-radius: 50%;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    /* Content Text */
+    .intro-content {
+      text-align: center;
+      z-index: 11;
+      position: relative;
+      margin-top: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      padding: 2em;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .intro-title {
+      color: var(--text-light);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      font-size: 2.5rem;
+      margin-bottom: 0.5em;
+      letter-spacing: 1px;
+    }
+
+    .intro-title strong {
+      color: var(--accent);
+      font-weight: var(--fw-bold);
+      position: relative;
+      display: inline-block;
+    }
+
+    .intro-title strong::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+
+    .intro-subtitle {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), #FF8A65);
+      color: var(--text-light);
+      padding: 0.75em 1.5em;
+      font-family: var(--ff-secondary);
+      margin: 1em 0;
+      border-radius: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      font-weight: var(--fw-semi);
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .intro-subtitle::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      animation: shine 3s infinite;
+    }
+
+    .intro-description {
+      color: var(--text-light);
+      font-size: 1.1rem;
+      max-width: 80%;
+      margin: 1em auto;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    .btn-dive {
+      display: flex;
+      align-items: center;
+      gap: 0.8em;
+      margin-top: 2em;
+      padding: 0.8em 2em;
+      background: linear-gradient(135deg, var(--accent), #FF8A65);
+      border-radius: 30px;
+      color: var(--text-light);
+      font-weight: var(--fw-semi);
+      letter-spacing: 0.5px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+      border: none;
+    }
+
+    .btn-dive span {
+      z-index: 1;
+      position: relative;
+    }
+
+    .btn-dive i {
+      z-index: 1;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .btn-dive::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #FF8A65, #FF5722);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .btn-dive:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-dive:hover::before {
+      opacity: 1;
+    }
+
+    .btn-dive:hover i {
+      transform: translateY(3px);
+      animation: bounce 1s infinite;
+    }
+
+    /* Wave Divider */
+    .wave-divider {
       position: absolute;
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 50px;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%230077be" fill-opacity="1" d="M0,128L48,138.7C96,149,192,171,288,181.3C384,192,480,192,576,176C672,160,768,128,864,117.3C960,107,1056,117,1152,144C1248,171,1344,213,1392,234.7L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-      background-size: cover;
-      background-repeat: no-repeat;
+      overflow: hidden;
+      line-height: 0;
+      z-index: 4;
     }
 
+    .wave-divider svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 150px;
+    }
+
+    .wave-divider .wave {
+      fill: var(--shallow);
+    }
+
+    /* Swimming Fish */
+    .water-creatures {
+      position: absolute;
+      width: 100%;
+      height: 300px;
+      bottom: 0;
+      left: 0;
+      z-index: 3;
+    }
+
+    .small-fish {
+      position: absolute;
+      opacity: 0.7;
+      transform-origin: center;
+    }
+
+    .small-fish:nth-child(1) {
+      bottom: 40px;
+      left: 15%;
+      animation: swimFish 25s infinite linear;
+    }
+
+    .small-fish:nth-child(2) {
+      bottom: 100px;
+      left: 45%;
+      animation: swimFish 35s infinite linear;
+      animation-delay: 3s;
+    }
+
+    .small-fish:nth-child(3) {
+      bottom: 170px;
+      left: 75%;
+      animation: swimFish 28s infinite linear;
+      animation-delay: 7s;
+    }
+
+    /* Clouds */
     .cloud {
       position: absolute;
       background: rgba(255, 255, 255, 0.8);
@@ -470,7 +820,7 @@
       height: 40px;
       animation: float 20s infinite linear;
       opacity: 0.8;
-      z-index: 10;
+      z-index: 1;
     }
 
     .cloud:nth-child(1) {
@@ -497,6 +847,31 @@
       animation-duration: 50s;
     }
 
+    .cloud:nth-child(4) {
+      top: 18%;
+      left: 85%;
+      width: 110px;
+      height: 55px;
+      animation-duration: 48s;
+    }
+
+    .cloud:nth-child(5) {
+      top: 5%;
+      left: 25%;
+      width: 90px;
+      height: 45px;
+      animation-duration: 52s;
+    }
+
+    .cloud:nth-child(6) {
+      top: 30%;
+      left: 60%;
+      width: 80px;
+      height: 40px;
+      animation-duration: 58s;
+    }
+
+    /* Animations */
     @keyframes float {
       from {
         transform: translateX(0);
@@ -507,57 +882,109 @@
       }
     }
 
-    .intro-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2em;
-      margin-top: 4em;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(5px);
-      border-radius: 15px;
-      box-shadow: var(--bs);
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
     }
 
-    .profile-container {
-      position: relative;
-      width: 200px;
-      height: 200px;
-      margin-bottom: 2em;
+    @keyframes sway {
+
+      0%,
+      100% {
+        transform: rotate(var(--rotate, 0)) translateX(var(--translateX, 0)) translateY(var(--translateY, 0)) scale(1);
+      }
+
+      50% {
+        transform: rotate(var(--rotate, 0)) translateX(var(--translateX, 0)) translateY(var(--translateY, 0)) scale(1.05);
+      }
     }
 
-    .profile-pic {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid var(--text-light);
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    @keyframes waveMove {
+      0% {
+        transform: translateX(0);
+      }
+
+      50% {
+        transform: translateX(-50%);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
     }
 
-    .intro-title {
-      color: var(--text-light);
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    @keyframes swimFish {
+      0% {
+        transform: translateX(0) translateY(0) scaleX(1);
+      }
+
+      25% {
+        transform: translateX(200px) translateY(-30px) scaleX(1);
+      }
+
+      49% {
+        transform: translateX(400px) translateY(0) scaleX(1);
+      }
+
+      50% {
+        transform: translateX(400px) translateY(0) scaleX(-1);
+      }
+
+      75% {
+        transform: translateX(200px) translateY(30px) scaleX(-1);
+      }
+
+      100% {
+        transform: translateX(0) translateY(0) scaleX(-1);
+      }
     }
 
-    .intro-subtitle {
-      display: inline-block;
-      background: var(--accent);
-      color: var(--text-light);
-      padding: 0.75em 1.5em;
-      font-family: var(--ff-secondary);
-      margin: 1em 0;
-      border-radius: 4px;
-      box-shadow: var(--bs);
-      font-weight: var(--fw-semi);
+    @keyframes shine {
+      0% {
+        left: -100%;
+      }
+
+      20% {
+        left: 100%;
+      }
+
+      100% {
+        left: 100%;
+      }
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(5px);
+      }
+    }
+
+    .wave-animation {
+      animation: waveMove 15s linear infinite;
+    }
+
+    .wave-animation-delayed {
+      animation: waveMove 15s linear infinite;
+      animation-delay: -5s;
     }
 
     /* Shallow Layer - Skills */
     .shallow-layer {
       background: linear-gradient(180deg, var(--shallow) 0%, var(--moderate) 100%);
       z-index: 4;
+      margin-top: 0;
+      padding-top: 7em;
     }
 
     .fish {
@@ -666,29 +1093,6 @@
       transform: scale(1.05);
     }
 
-    .waves-divider {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      overflow: hidden;
-      line-height: 0;
-      transform: rotate(180deg);
-      z-index: 5;
-    }
-
-    .waves-divider svg {
-      position: relative;
-      display: block;
-      width: calc(100% + 1.3px);
-      height: 70px;
-      transform: rotateY(180deg);
-    }
-
-    .waves-divider .shape-fill {
-      fill: var(--moderate);
-    }
-
     /* Moderate Layer - About Me */
     .moderate-layer {
       background: linear-gradient(180deg, var(--moderate) 0%, var(--deep) 100%);
@@ -704,7 +1108,6 @@
       border-radius: 50% 50% 0 0;
       transform-origin: bottom center;
       animation: sway 6s ease-in-out infinite alternate;
-
     }
 
     .seaweed:nth-child(1) {
@@ -984,20 +1387,231 @@
       width: 100%;
     }
 
-    /* Responsive adjustments */
+    /* Responsive adjustments for island and wave */
+    @media (max-width: 1024px) {
+      .island {
+        width: 400px;
+        height: 220px;
+      }
+
+      .island-top {
+        width: 350px;
+        height: 170px;
+        left: 25px;
+      }
+
+      .palm-tree.left {
+        left: 30px;
+        transform: rotate(-15deg) scale(0.6);
+      }
+
+      .palm-tree.right {
+        right: 30px;
+        transform: rotate(10deg) scale(0.7);
+      }
+    }
+
     @media (max-width: 768px) {
       .depth-marker {
         display: none;
       }
+
+      .island {
+        width: 300px;
+        height: 180px;
+      }
+
+      .island-top {
+        width: 260px;
+        height: 140px;
+        left: 20px;
+      }
+
+      .palm-tree.left {
+        left: 20px;
+        transform: rotate(-15deg) scale(0.5);
+      }
+
+      .palm-tree.right {
+        right: 20px;
+        transform: rotate(10deg) scale(0.5);
+      }
+
+      .profile-container {
+        width: 150px;
+        height: 150px;
+      }
+
+      .intro-title {
+        font-size: 1.8rem;
+      }
+
+      .intro-subtitle {
+        font-size: 0.9rem;
+        padding: 0.6em 1.2em;
+      }
+
+      .wave-divider svg {
+        height: 100px;
+      }
+
+      .small-fish {
+        transform: scale(0.7);
+      }
     }
 
-    @media (prefers-reduced-motion: reduce) {
+    @media (max-width: 480px) {
+      .island {
+        width: 240px;
+        height: 150px;
+      }
 
-      .fish,
-      .cloud,
-      .bubble,
-      .seaweed {
-        animation: none !important;
+      .island-top {
+        width: 210px;
+        height: 120px;
+        left: 15px;
+        top: -20px;
+      }
+
+      .palm-tree.left {
+        left: 15px;
+        top: -60px;
+        transform: rotate(-15deg) scale(0.4);
+      }
+
+      .palm-tree.right {
+        right: 15px;
+        top: -60px;
+        transform: rotate(10deg) scale(0.4);
+      }
+
+      .profile-container {
+        width: 120px;
+        height: 120px;
+        margin-top: -30px;
+      }
+
+      .intro-content {
+        padding: 1.5em;
+        margin-top: 30px;
+      }
+
+      .intro-title {
+        font-size: 1.5rem;
+      }
+
+      .intro-subtitle {
+        font-size: 0.8rem;
+        padding: 0.5em 1em;
+      }
+
+      .intro-description {
+        font-size: 0.9rem;
+        max-width: 100%;
+      }
+
+      .btn-dive {
+        padding: 0.6em 1.5em;
+        font-size: 0.85rem;
+      }
+
+      .wave-divider svg {
+        height: 70px;
+      }
+    }
+
+    /* Touch device optimizations */
+    @media (hover: none) {
+      .intro-container:hover {
+        transform: none;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      .profile-container:hover .profile-pic {
+        transform: none;
+        border-color: rgba(255, 255, 255, 0.8);
+      }
+
+      .btn-dive:hover {
+        transform: none;
+      }
+
+      .btn-dive:active {
+        transform: translateY(2px);
+      }
+    }
+
+    /* Fix for iOS Safari height issues */
+    @supports (-webkit-touch-callout: none) {
+      .surface-layer {
+        min-height: -webkit-fill-available;
+      }
+
+      .intro-content {
+        backdrop-filter: blur(5px);
+        /* Less intense blur for better iOS performance */
+      }
+    }
+
+    /* Orientation-specific adjustments */
+    @media (max-width: 768px) and (orientation: landscape) {
+      .surface-layer {
+        min-height: 120vh;
+      }
+
+      .island-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 2em;
+        gap: 1em;
+      }
+
+      .island {
+        width: 250px;
+        height: 130px;
+        order: 1;
+      }
+
+      .island-top {
+        width: 220px;
+        height: 100px;
+      }
+
+      .profile-container {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 0;
+        margin-top: 0;
+        margin-right: 1em;
+        order: 0;
+      }
+
+      .intro-content {
+        width: 100%;
+        margin-top: 20px;
+        order: 2;
+      }
+
+      .intro-title,
+      .intro-subtitle,
+      .intro-description {
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+        margin: 0.3em 0;
+      }
+    }
+
+    /* For old Android WebViews */
+    @supports not (backdrop-filter: blur(10px)) {
+
+      .intro-content,
+      .service,
+      .about-container,
+      .contact-container {
+        background-color: rgba(0, 51, 102, 0.7);
+        /* Fallback for older browsers */
       }
     }
   </style>
@@ -1038,384 +1652,455 @@
   <!-- Ocean Parallax Layers -->
   <div class="parallax-container" id="ocean-container">
     <!-- Surface Layer - Introduction -->
-    <section class="ocean-layer surface-layer" id="surface">
-      <div class="surface-objects">
-        <div class="cloud"></div>
-        <div class="cloud"></div>
-        <div class="cloud"></div>
-        <div class="cloud"></div>
-        <div class="cloud"></div>
-        <div class="cloud"></div>
-        <div class="surface-wave"></div>
-      </div>
-      <div class="layer-content">
-        <div class="intro-container">
-          <div class="profile-container">
-            <img src="img/intro-pic.jpg" alt="Sultan Niazov" class="profile-pic" />
-          </div>
-          <h1 class="section__title intro-title">
-            Hello, I'm <strong>Sultan Niazov</strong>
-          </h1>
-          <p class="intro-subtitle">Full Stack Developer</p>
-          <p>Dive deeper to explore my skills and projects</p>
-          <div class="waves-divider">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
-              preserveAspectRatio="none">
-              <path
-                d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-                class="shape-fill"></path>
-            </svg>
-          </div>
-          <a href="#shallow" class="btn">Dive Down <i class="fas fa-chevron-down"></i></a>
+    <div class="parallax-container" id="ocean-container">
+      <!-- Surface Layer - Introduction -->
+      <section class="ocean-layer surface-layer" id="surface">
+        <div class="surface-objects">
+          <!-- Keeping the original clouds -->
+          <div class="cloud cloud--1"></div>
+          <div class="cloud cloud--2"></div>
+          <div class="cloud cloud--3"></div>
+          <div class="cloud cloud--4"></div>
+          <div class="cloud cloud--5"></div>
+          <div class="cloud cloud--6"></div>
         </div>
-      </div>
-    </section>
 
-    <!-- Shallow Layer - My Skills -->
-    <section class="ocean-layer shallow-layer" id="shallow">
-      <div class="fish"></div>
-      <div class="fish"></div>
-      <div class="fish"></div>
-      <div class="layer-content">
-        <h2 class="section__title text-center" style="margin-bottom: 1em; color: var(--text-light);">My Skills</h2>
-        <div class="services">
-          <!-- skill-->
-          <div class="service">
-            <i class="fas fa-code service-icon"></i>
-            <h3>Web Development</h3>
-            <p>Creating responsive, modern web applications with cutting-edge technologies</p>
-            <ul class="skills-list">
-              <li>React</li>
-              <li>TypeScript</li>
-              <li>CSS</li>
-            </ul>
-          </div>
+        <div class="layer-content">
+          <div class="island-container">
+            <!-- Island with palm trees -->
+            <div class="island">
+              <div class="island-top"></div>
 
-          <!-- skill-->
-          <div class="service">
-            <i class="fas fa-laptop-code service-icon"></i>
-            <h3>Back-End Development</h3>
-            <p>Building robust server-side applications and APIs</p>
-            <ul class="skills-list">
-              <li>Node.js</li>
-              <li>Express</li>
-              <li>API REST</li>
-            </ul>
-          </div>
+              <!-- Palm tree left -->
+              <div class="palm-tree left">
+                <div class="palm-trunk"></div>
+                <div class="palm-leaves">
+                  <div class="palm-leaf"></div>
+                  <div class="palm-leaf"></div>
+                  <div class="palm-leaf"></div>
+                  <div class="palm-leaf"></div>
+                  <div class="palm-leaf"></div>
+                  <div class="palm-leaf"></div>
+                </div>
+              </div>
 
-          <!-- skill-->
-          <div class="service">
-            <i class="fas fa-database service-icon"></i>
-            <h3>Database & DevOps</h3>
-            <p>Managing data efficiently and deploying applications to the cloud</p>
-            <ul class="skills-list">
-              <li>PostgreSQL</li>
-              <li>NoSQL</li>
-              <li>Google Cloud</li>
-              <li>Prisma ORM</li>
-              <li>Git/GitHub</li>
-              <li>GitHub Actions</li>
-              <li>Firestore/Firebase</li>
-              <li>Docker</li>
-            </ul>
-          </div>
+              <!-- Palm tree right -->
+              <div class="palm-tree right">
+                <div class="palm-trunk"></div>
+                <div class="palm-leaves">
+                  <div class="palm-leaf"></div>
+                  <div class="palm-leaf"></div>
+                  <div class="palm-leaf"></div>
+                  <div class="palm-leaf"></div>
+                  <div class="palm-leaf"></div>
+                  <div class="palm-leaf"></div>
+                </div>
+              </div>
+            </div>
 
-          <!-- skill-->
-          <div class="service">
-            <i class="fas fa-hammer service-icon"></i>
-            <h3>Build & Tooling</h3>
-            <p>Use of modern build tools offering fast rebuilds, plugin ecosystems, and code‑splitting optimizations</p>
-            <ul class="skills-list">
-              <li>Vite</li>
-              <li>ESLint</li>
-              <li>Ionic/Capacitor</li>
-            </ul>
-          </div>
-        </div>
-        <div class="text-center" style="margin-top: 2em;">
-          <a href="#moderate" class="btn">Dive Deeper <i class="fas fa-chevron-down"></i></a>
-        </div>
-      </div>
-    </section>
+            <!-- Profile picture -->
+            <div class="profile-container">
+              <div class="profile-outline"></div>
+              <img src="img/intro-pic.jpg" alt="Sultan Niazov" class="profile-pic" />
+              <div class="profile-shine"></div>
+            </div>
 
-    <!-- Moderate Layer - About Me -->
-    <section class="ocean-layer moderate-layer" id="moderate">
-      <div class="seaweed"></div>
-      <div class="seaweed"></div>
-      <div class="seaweed"></div>
-      <div class="seaweed"></div>
-      <div class="seaweed"></div>
-
-      <div class="layer-content">
-        <h2 class="section__title text-center" style="margin-bottom: 1em; color: var(--text-light);">About Me</h2>
-        <div class="about-container">
-          <div class="about-text">
-            <p>
-              I'm a passionate software developer with a love for exploring and learning new technologies. Constantly
-              seeking
-              new knowledge, I combine my technical skills with creativity to build elegant solutions to complex
-              problems.
-            </p>
-            <p>
-              My expertise in <strong>Object-Oriented Programming and Web Technologies</strong>, combined with my eye
-              for
-              design and problem-solving abilities, allows me to develop applications that are not only functional but
-              also
-              user-friendly and visually appealing.
-            </p>
-            <p>
-              I'm always staying up-to-date on industry trends and expanding my skill set to tackle new challenges in
-              the
-              ever-evolving world of technology.
-            </p>
-            <div style="margin-top: 2em;">
-              <a href="#deep" class="btn">Explore Projects <i class="fas fa-chevron-down"></i></a>
+            <!-- Intro content -->
+            <div class="intro-content">
+              <h1 class="section__title intro-title">
+                Hello, I'm <strong>Sultan Niazov</strong>
+              </h1>
+              <p class="intro-subtitle">Full Stack Developer</p>
+              <p class="intro-description">Dive deeper to explore my skills and projects</p>
+              <a href="#shallow" class="btn btn-dive">
+                <span>Dive Down</span>
+                <i class="fas fa-chevron-down"></i>
+              </a>
             </div>
           </div>
-          <div class="about-image-container">
-            <img src="img/about-me-pic.jpeg" alt="Sultan Niazov"
-              style="width: 100%; height: auto; object-fit: cover; border-radius: 8px; box-shadow: var(--bs);" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Deep Layer - Projects -->
-    <section class="ocean-layer deep-layer" id="deep">
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-
-      <div class="layer-content">
-        <h2 class="section__title text-center" style="margin-bottom: 1em; color: var(--text-light);">Featured Projects
-        </h2>
-        <div class="services" style="margin-bottom: 2em;">
-          <!-- Project 1 -->
-          <div class="service">
-            <h3>E-Commerce Platform</h3>
-            <p>A full-featured online store with product catalog, shopping cart, and payment processing.</p>
-            <p><strong>Technologies:</strong> React, Node.js, PostgreSQL, Stripe API</p>
-          </div>
-
-          <!-- Project 2 -->
-          <div class="service">
-            <h3>Task Management App</h3>
-            <p>Collaborative project management tool with real-time updates and team communication features.</p>
-            <p><strong>Technologies:</strong> TypeScript, Firebase, React, Express</p>
-          </div>
-
-          <!-- Project 3 -->
-          <div class="service">
-            <h3>Weather Visualization</h3>
-            <p>Interactive dashboard displaying weather data with customizable views and forecasting.</p>
-            <p><strong>Technologies:</strong> D3.js, React, OpenWeather API</p>
-          </div>
-        </div>
-        <div class="text-center">
-          <a href="#abyss" class="btn">Contact Me <i class="fas fa-chevron-down"></i></a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Abyss Layer - Contact -->
-    <section class="ocean-layer abyss-layer" id="abyss">
-      <div class="glow"></div>
-      <div class="glow"></div>
-      <div class="glow"></div>
-
-      <div class="layer-content">
-        <h2 class="section__title text-center" style="margin-bottom: 1em; color: var(--text-light);">Get In Touch</h2>
-        <div class="contact-container">
-          <p>Interested in working together? Feel free to reach out!</p>
-          <a href="mailto:niazov.sultan@gmail.com" class="email-link">niazov.sultan@gmail.com</a>
-
-          <ul class="social-list">
-            <li class="social-item">
-              <a href="https://www.linkedin.com/in/sultan-niazov/" aria-label="LinkedIn">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </li>
-            <li class="social-item">
-              <a href="https://github.com/Sooltik" aria-label="GitHub">
-                <i class="fab fa-github"></i>
-              </a>
-            </li>
-          </ul>
         </div>
 
-        <!-- Footer -->
-        <footer class="footer">
-          <p>© 2025 Sultan Niazov. All rights reserved.</p>
-        </footer>
-      </div>
-    </section>
-  </div>
+        <!-- Water creatures -->
+        <div class="water-creatures">
+          <svg class="small-fish" width="40" height="20" viewBox="0 0 40 20">
+            <path d="M5,10 Q15,3 25,10 L35,10 L30,15 L35,10 L30,5 Z" fill="rgba(255,255,255,0.7)" />
+            <circle cx="8" cy="10" r="2" fill="rgba(0,0,0,0.5)" />
+          </svg>
+          <svg class="small-fish" width="30" height="15" viewBox="0 0 40 20">
+            <path d="M5,10 Q15,3 25,10 L35,10 L30,15 L35,10 L30,5 Z" fill="rgba(255,255,255,0.7)" />
+            <circle cx="8" cy="10" r="2" fill="rgba(0,0,0,0.5)" />
+          </svg>
+          <svg class="small-fish" width="25" height="12" viewBox="0 0 40 20">
+            <path d="M5,10 Q15,3 25,10 L35,10 L30,15 L35,10 L30,5 Z" fill="rgba(255,255,255,0.7)" />
+            <circle cx="8" cy="10" r="2" fill="rgba(0,0,0,0.5)" />
+          </svg>
+        </div>
 
-  <!-- Back to top button -->
-  <a href="#surface" class="back-to-top" aria-label="Back to top">
-    <i class="fas fa-arrow-up"></i>
-  </a>
+        <!-- Animated wave divider -->
+        <div class="wave-divider">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path class="wave wave-animation"
+              d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+              opacity=".25" fill="#0077be"></path>
+            <path class="wave wave-animation-delayed"
+              d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+              opacity=".5" fill="#0077be"></path>
+            <path class="wave"
+              d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+              fill="#0077be"></path>
+          </svg>
+        </div>
+      </section>
 
-  <!-- JavaScript -->
-  <script>
-    // Navigation toggle
-    const navToggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelectorAll('.nav__link');
+      <!-- Shallow Layer - My Skills -->
+      <section class="ocean-layer shallow-layer" id="shallow">
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="fish"></div>
+        <div class="layer-content">
+          <h2 class="section__title text-center" style="margin-bottom: 1em; color: var(--text-light);">My Skills</h2>
+          <div class="services">
+            <!-- skill-->
+            <div class="service">
+              <i class="fas fa-code service-icon"></i>
+              <h3>Web Development</h3>
+              <p>Creating responsive, modern web applications with cutting-edge technologies</p>
+              <ul class="skills-list">
+                <li>React</li>
+                <li>TypeScript</li>
+                <li>CSS</li>
+              </ul>
+            </div>
 
-    navToggle.addEventListener('click', () => {
-      document.body.classList.toggle('nav-open');
-    });
+            <!-- skill-->
+            <div class="service">
+              <i class="fas fa-laptop-code service-icon"></i>
+              <h3>Back-End Development</h3>
+              <p>Building robust server-side applications and APIs</p>
+              <ul class="skills-list">
+                <li>Node.js</li>
+                <li>Express</li>
+                <li>API REST</li>
+              </ul>
+            </div>
 
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        document.body.classList.remove('nav-open');
+            <!-- skill-->
+            <div class="service">
+              <i class="fas fa-database service-icon"></i>
+              <h3>Database & DevOps</h3>
+              <p>Managing data efficiently and deploying applications to the cloud</p>
+              <ul class="skills-list">
+                <li>PostgreSQL</li>
+                <li>NoSQL</li>
+                <li>Google Cloud</li>
+                <li>Prisma ORM</li>
+                <li>Git/GitHub</li>
+                <li>GitHub Actions</li>
+                <li>Firestore/Firebase</li>
+                <li>Docker</li>
+              </ul>
+            </div>
+
+            <!-- skill-->
+            <div class="service">
+              <i class="fas fa-hammer service-icon"></i>
+              <h3>Build & Tooling</h3>
+              <p>Use of modern build tools offering fast rebuilds, plugin ecosystems, and code‑splitting optimizations
+              </p>
+              <ul class="skills-list">
+                <li>Vite</li>
+                <li>ESLint</li>
+                <li>Ionic/Capacitor</li>
+              </ul>
+            </div>
+          </div>
+          <div class="text-center" style="margin-top: 2em;">
+            <a href="#moderate" class="btn">Dive Deeper <i class="fas fa-chevron-down"></i></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Moderate Layer - About Me -->
+      <section class="ocean-layer moderate-layer" id="moderate">
+        <div class="seaweed"></div>
+        <div class="seaweed"></div>
+        <div class="seaweed"></div>
+        <div class="seaweed"></div>
+        <div class="seaweed"></div>
+
+        <div class="layer-content">
+          <h2 class="section__title text-center" style="margin-bottom: 1em; color: var(--text-light);">About Me</h2>
+          <div class="about-container">
+            <div class="about-text">
+              <p>
+                I'm a passionate software developer with a love for exploring and learning new technologies. Constantly
+                seeking
+                new knowledge, I combine my technical skills with creativity to build elegant solutions to complex
+                problems.
+              </p>
+              <p>
+                My expertise in <strong>Object-Oriented Programming and Web Technologies</strong>, combined with my eye
+                for
+                design and problem-solving abilities, allows me to develop applications that are not only functional but
+                also
+                user-friendly and visually appealing.
+              </p>
+              <p>
+                I'm always staying up-to-date on industry trends and expanding my skill set to tackle new challenges in
+                the
+                ever-evolving world of technology.
+              </p>
+              <div style="margin-top: 2em;">
+                <a href="#deep" class="btn">Explore Projects <i class="fas fa-chevron-down"></i></a>
+              </div>
+            </div>
+            <div class="about-image-container">
+              <img src="img/about-me-pic.jpeg" alt="Sultan Niazov"
+                style="width: 100%; height: auto; object-fit: cover; border-radius: 8px; box-shadow: var(--bs);" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Deep Layer - Projects -->
+      <section class="ocean-layer deep-layer" id="deep">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+
+        <div class="layer-content">
+          <h2 class="section__title text-center" style="margin-bottom: 1em; color: var(--text-light);">Featured Projects
+          </h2>
+          <div class="services" style="margin-bottom: 2em;">
+            <!-- Project 1 -->
+            <div class="service">
+              <h3>E-Commerce Platform</h3>
+              <p>A full-featured online store with product catalog, shopping cart, and payment processing.</p>
+              <p><strong>Technologies:</strong> React, Node.js, PostgreSQL, Stripe API</p>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="service">
+              <h3>Task Management App</h3>
+              <p>Collaborative project management tool with real-time updates and team communication features.</p>
+              <p><strong>Technologies:</strong> TypeScript, Firebase, React, Express</p>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="service">
+              <h3>Weather Visualization</h3>
+              <p>Interactive dashboard displaying weather data with customizable views and forecasting.</p>
+              <p><strong>Technologies:</strong> D3.js, React, OpenWeather API</p>
+            </div>
+          </div>
+          <div class="text-center">
+            <a href="#abyss" class="btn">Contact Me <i class="fas fa-chevron-down"></i></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Abyss Layer - Contact -->
+      <section class="ocean-layer abyss-layer" id="abyss">
+        <div class="glow"></div>
+        <div class="glow"></div>
+        <div class="glow"></div>
+
+        <div class="layer-content">
+          <h2 class="section__title text-center" style="margin-bottom: 1em; color: var(--text-light);">Get In Touch</h2>
+          <div class="contact-container">
+            <p>Interested in working together? Feel free to reach out!</p>
+            <a href="mailto:niazov.sultan@gmail.com" class="email-link">niazov.sultan@gmail.com</a>
+
+            <ul class="social-list">
+              <li class="social-item">
+                <a href="https://www.linkedin.com/in/sultan-niazov/" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </li>
+              <li class="social-item">
+                <a href="https://github.com/Sooltik" aria-label="GitHub">
+                  <i class="fab fa-github"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Footer -->
+          <footer class="footer">
+            <p>© 2025 Sultan Niazov. All rights reserved.</p>
+          </footer>
+        </div>
+      </section>
+    </div>
+
+    <!-- Back to top button -->
+    <a href="#surface" class="back-to-top" aria-label="Back to top">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script>
+      // Navigation toggle
+      const navToggle = document.querySelector('.nav-toggle');
+      const navLinks = document.querySelectorAll('.nav__link');
+
+      navToggle.addEventListener('click', () => {
+        document.body.classList.toggle('nav-open');
       });
-    });
 
-    // Scroll effects
-    const header = document.querySelector('header');
-    const backToTop = document.querySelector('.back-to-top');
-    const depthLine = document.querySelector('.depth-line');
-    const depthTexts = document.querySelectorAll('.depth-text');
-    const oceanContainer = document.getElementById('ocean-container');
-
-    // Set the initial height of the depth line
-    const totalDepthHeight = window.innerHeight * 0.8;
-    depthLine.style.height = totalDepthHeight + 'px';
-
-    // Create a fill effect by using a pseudo-element
-    const depthLineStyle = document.createElement('style');
-    depthLineStyle.textContent = `
-      .depth-line::before {
-        height: 0;
-      }
-    `;
-    document.head.appendChild(depthLineStyle);
-
-    // Update depth marker based on scroll position
-    function updateDepthMarker() {
-      const scrollTop = oceanContainer.scrollTop;
-      const windowHeight = window.innerHeight;
-      const documentHeight = oceanContainer.scrollHeight;
-
-      // Calculate scroll percentage
-      const scrollPercent = Math.min(scrollTop / (documentHeight - windowHeight), 1);
-
-      // Show the appropriate depth text based on scroll position
-      depthTexts.forEach(text => {
-        text.classList.remove('visible');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          document.body.classList.remove('nav-open');
+        });
       });
 
-      // Update the depth line to show current position
-      const depthHeight = windowHeight; // Total height of depth line
-      let fillPercentage;
-
-      if (scrollPercent < 0.2) {
-        document.querySelector('.depth-text.surface').classList.add('visible');
-        fillPercentage = scrollPercent / 0.2; // Fill proportionally within surface zone
-      } else if (scrollPercent < 0.4) {
-        document.querySelector('.depth-text.shallow').classList.add('visible');
-        fillPercentage = 0.2 + (scrollPercent - 0.25) / 0.2; // Fill proportionally within shallow zone
-      } else if (scrollPercent < 0.6) {
-        document.querySelector('.depth-text.moderate').classList.add('visible');
-        fillPercentage = 0.4 + (scrollPercent - 0.25) / 0.2; // Fill proportionally within moderate zone
-      } else if (scrollPercent < 0.8) {
-        document.querySelector('.depth-text.deep').classList.add('visible');
-        fillPercentage = 0.6 + (scrollPercent - 0.25) / 0.2; // Fill proportionally within deep zone
-      } else {
-        document.querySelector('.depth-text.abyss').classList.add('visible');
-        fillPercentage = 0.8 + (scrollPercent - 0.25) / 0.2; // Fill proportionally within abyss zone
-      }
-
-      // Update the fill height using the ::before pseudo-element
-      depthLineStyle.textContent = `
-        .depth-line::before {
-          height: ${fillPercentage * 100}%;
-        }
-      `;
-    }
-
-    oceanContainer.addEventListener('scroll', () => {
-      // Header scroll effect
-      if (oceanContainer.scrollTop > 100) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-
-      // Show/hide back to top button
-      if (oceanContainer.scrollTop > 500) {
-        backToTop.classList.add('show');
-      } else {
-        backToTop.classList.remove('show');
-      }
-
-      // Update depth marker
-      updateDepthMarker();
-    });
-
-    // Initialize depth marker
-    updateDepthMarker();
-
-    // Smooth scroll for all links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-
-        if (targetElement) {
-          targetElement.scrollIntoView({
-            behavior: 'smooth'
-          });
-        }
+      // Add animation to palm trees
+      const palmLeaves = document.querySelectorAll('.palm-leaf');
+      palmLeaves.forEach((leaf, index) => {
+        leaf.style.animation = `sway 3s ease-in-out infinite`;
+        leaf.style.animationDelay = `${index * 0.2}s`;
       });
-    });
 
-    // Create animated fish elements
-    const fishContainer = document.querySelector('.shallow-layer');
-    const fishSVG = `
-      <svg viewBox="0 0 100 50" width="100%" height="100%">
-        <path d="M 10,25 Q 30,10 50,25 Q 70,40 90,25 L 90,25 Q 70,10 50,25 Q 30,40 10,25 Z" fill="rgba(255,255,255,0.8)" />
-        <circle cx="75" cy="25" r="3" fill="rgba(0,0,0,0.6)" />
-      </svg>
-    `;
+      // Add gentle motion to the island
+      const island = document.querySelector('.island');
+      island.style.animation = 'float 8s ease-in-out infinite';
 
-    const fishes = document.querySelectorAll('.fish');
-    fishes.forEach(fish => {
-      fish.innerHTML = fishSVG;
-    });
+      // Add wave animations
+      const wavePaths = document.querySelectorAll('.wave-divider .wave');
+      wavePaths[0].classList.add('wave-animation');
+      wavePaths[1].classList.add('wave-animation-delayed');
 
-    document.addEventListener('DOMContentLoaded', function () {
+      // Create animated fish elements
       const fishContainer = document.querySelector('.shallow-layer');
       const fishSVG = `
-    <svg viewBox="0 0 100 50" width="100%" height="100%">
-      <path d="M 10,25 Q 30,10 50,25 Q 70,40 90,25 L 90,25 Q 70,10 50,25 Q 30,40 10,25 Z" fill="rgba(255,255,255,0.8)" />
-      <circle cx="75" cy="25" r="3" fill="rgba(0,0,0,0.6)" />
-    </svg>
-  `;
+        <svg viewBox="0 0 100 50" width="100%" height="100%">
+          <path d="M 10,25 Q 30,10 50,25 Q 70,40 90,25 L 90,25 Q 70,10 50,25 Q 30,40 10,25 Z" fill="rgba(255,255,255,0.8)" />
+          <circle cx="75" cy="25" r="3" fill="rgba(0,0,0,0.6)" />
+        </svg>
+      `;
 
-      // Clear existing fish and add new ones
       const fishes = document.querySelectorAll('.fish');
       fishes.forEach(fish => {
         fish.innerHTML = fishSVG;
       });
 
-      // Optional: Add more fish for better effect
-      for (let i = 0; i < 3; i++) {
-        const newFish = document.createElement('div');
-        newFish.className = 'fish';
-        newFish.innerHTML = fishSVG;
-        newFish.style.top = (Math.random() * 70 + 10) + '%';
-        newFish.style.left = '-60px';
-        newFish.style.animationDelay = (Math.random() * 10) + 's';
-        newFish.style.animationDuration = (Math.random() * 15 + 10) + 's';
-        fishContainer.appendChild(newFish);
+      // Scroll effects
+      const header = document.querySelector('header');
+      const backToTop = document.querySelector('.back-to-top');
+      const depthLine = document.querySelector('.depth-line');
+      const depthTexts = document.querySelectorAll('.depth-text');
+      const oceanContainer = document.getElementById('ocean-container');
+
+      // Set the initial height of the depth line
+      const totalDepthHeight = window.innerHeight * 0.8;
+      depthLine.style.height = totalDepthHeight + 'px';
+
+      // Create a fill effect by using a pseudo-element
+      const depthLineStyle = document.createElement('style');
+      depthLineStyle.textContent = `
+        .depth-line::before {
+          height: 0;
+        }
+      `;
+      document.head.appendChild(depthLineStyle);
+
+      // Update depth marker based on scroll position
+      function updateDepthMarker() {
+        const scrollTop = oceanContainer.scrollTop;
+        const windowHeight = window.innerHeight;
+        const documentHeight = oceanContainer.scrollHeight;
+
+        // Calculate scroll percentage
+        const scrollPercent = Math.min(scrollTop / (documentHeight - windowHeight), 1);
+
+        // Show the appropriate depth text based on scroll position
+        depthTexts.forEach(text => {
+          text.classList.remove('visible');
+        });
+
+        // Update the depth line to show current position
+        const depthHeight = windowHeight; // Total height of depth line
+        let fillPercentage;
+
+        if (scrollPercent < 0.2) {
+          document.querySelector('.depth-text.surface').classList.add('visible');
+          fillPercentage = scrollPercent / 0.2; // Fill proportionally within surface zone
+        } else if (scrollPercent < 0.4) {
+          document.querySelector('.depth-text.shallow').classList.add('visible');
+          fillPercentage = 0.2 + (scrollPercent - 0.25) / 0.2; // Fill proportionally within shallow zone
+        } else if (scrollPercent < 0.6) {
+          document.querySelector('.depth-text.moderate').classList.add('visible');
+          fillPercentage = 0.4 + (scrollPercent - 0.25) / 0.2; // Fill proportionally within moderate zone
+        } else if (scrollPercent < 0.8) {
+          document.querySelector('.depth-text.deep').classList.add('visible');
+          fillPercentage = 0.6 + (scrollPercent - 0.25) / 0.2; // Fill proportionally within deep zone
+        } else {
+          document.querySelector('.depth-text.abyss').classList.add('visible');
+          fillPercentage = 0.8 + (scrollPercent - 0.25) / 0.2; // Fill proportionally within abyss zone
+        }
+
+        // Update the fill height using the ::before pseudo-element
+        depthLineStyle.textContent = `
+          .depth-line::before {
+            height: ${fillPercentage * 100}%;
+          }
+        `;
       }
-    });
-  </script>
+
+      oceanContainer.addEventListener('scroll', () => {
+        // Header scroll effect
+        if (oceanContainer.scrollTop > 100) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+
+        // Show/hide back to top button
+        if (oceanContainer.scrollTop > 500) {
+          backToTop.classList.add('show');
+        } else {
+          backToTop.classList.remove('show');
+        }
+
+        // Update depth marker
+        updateDepthMarker();
+      });
+
+      // Initialize depth marker
+      updateDepthMarker();
+
+      // Smooth scroll for all links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // Optional: Add more fish for better effect
+      document.addEventListener('DOMContentLoaded', function () {
+        // Add more fish to the shallow layer
+        for (let i = 0; i < 3; i++) {
+          const newFish = document.createElement('div');
+          newFish.className = 'fish';
+          newFish.innerHTML = fishSVG;
+          newFish.style.top = (Math.random() * 70 + 10) + '%';
+          newFish.style.left = '-60px';
+          newFish.style.animationDelay = (Math.random() * 10) + 's';
+          newFish.style.animationDuration = (Math.random() * 15 + 10) + 's';
+          fishContainer.appendChild(newFish);
+        }
+      });
+    </script>
 </body>
 
 </html>
