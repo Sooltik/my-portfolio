@@ -1,0 +1,74 @@
+.depth-marker {
+    position: fixed;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0.8;
+  }
+  
+  .depth-line {
+    width: 3px;
+    height: 80vh;
+    background: rgba(255, 255, 255, 0.7);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .depth-line-fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: var(--accent);
+    transition: height 0.3s ease-out;
+  }
+  
+  .depth-text {
+    position: absolute;
+    right: 15px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    transform: translateX(100%);
+    white-space: nowrap;
+    transition: color 0.3s ease, opacity 0.3s ease;
+    opacity: 0.5;
+  }
+  
+  .depth-text.visible {
+    color: var(--text-light);
+    opacity: 1;
+  }
+  
+  .depth-text.surface {
+    top: 0;
+  }
+  
+  .depth-text.shallow {
+    top: 20%;
+  }
+  
+  .depth-text.moderate {
+    top: 40%;
+  }
+  
+  .depth-text.deep {
+    top: 60%;
+  }
+  
+  .depth-text.abyss {
+    top: 80%;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .depth-marker {
+      display: none;
+    }
+  }

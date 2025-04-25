@@ -1,0 +1,51 @@
+{
+  "name": "my-portfolio",
+  "version": "1.0.0",
+  "description": "An interactive ocean-themed portfolio showcasing my skills and projects with a unique depth-based navigation experience",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext ts,tsx",
+    "lint:fix": "eslint src --ext ts,tsx --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
+    "start": "vite"
+  },
+  "keywords": [
+    "portfolio",
+    "react",
+    "typescript",
+    "ocean-theme",
+    "frontend",
+    "developer"
+  ],
+  "author": "Sultan Niazov",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "@typescript-eslint/eslint-plugin": "^7.1.0",
+    "@typescript-eslint/parser": "^7.1.0",
+    "@vitejs/plugin-react": "^4.4.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.3"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

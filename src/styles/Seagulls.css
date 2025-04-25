@@ -1,0 +1,340 @@
+/* Container to hold all seagulls */
+.seagulls-container {
+    position: absolute;
+    top: 5%;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* Base seagull wrapper: supports scale and horizontal flip via CSS vars */
+.seagull {
+    position: absolute;
+    transform-origin: center;
+    cursor: pointer;
+    pointer-events: auto;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+    /* --scale: size factor; --dir: 1 or -1 for left/right facing */
+    --scale: 1;
+    --dir: 1;
+    transform: scaleX(var(--dir)) scale(var(--scale));
+}
+
+/* Body */
+.seagull-body {
+    width: 36px;
+    height: 14px;
+    background: linear-gradient(135deg, #fafafa 0%, #eaeaea 100%);
+    border-radius: 50% 50% 30% 30%;
+    position: relative;
+    z-index: 2;
+    box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.05);
+}
+
+.seagull-body::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #ddd;
+    border-radius: 0 0 30% 30%;
+}
+
+/* Head and details */
+.seagull-head {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border-radius: 50%;
+    left: -8px;
+    top: -5px;
+    z-index: 3;
+}
+
+.seagull-head::before {
+    /* Eye */
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #333;
+    border-radius: 50%;
+    top: 4px;
+    left: 6px;
+}
+
+.seagull-beak {
+    position: absolute;
+    width: 12px;
+    height: 6px;
+    background: #f8c03e;
+    top: 8px;
+    left: -4px;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    z-index: 4;
+}
+
+/* Tail */
+.seagull-tail {
+    position: absolute;
+    width: 12px;
+    height: 8px;
+    background: #f0f0f0;
+    right: -8px;
+    top: 3px;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+    z-index: 1;
+}
+
+/* Wings */
+.seagull-wing {
+    position: absolute;
+    width: 32px;
+    height: 8px;
+    background: linear-gradient(135deg, #fff 0%, #eaeaea 100%);
+    border-radius: 50% 50% 0 50%;
+    top: 0;
+    z-index: 1;
+}
+
+.seagull-wing.left {
+    left: -6px;
+    transform: rotate(-15deg);
+    transform-origin: 80% center;
+    animation: flapLeft 1.5s ease-in-out infinite;
+}
+
+.seagull-wing.right {
+    right: -6px;
+    transform: rotate(15deg);
+    transform-origin: 20% center;
+    animation: flapRight 1.5s ease-in-out infinite;
+}
+
+/* Flap animations */
+@keyframes flapLeft {
+
+    0%,
+    100% {
+        transform: rotate(-15deg);
+    }
+
+    50% {
+        transform: rotate(-45deg);
+    }
+}
+
+@keyframes flapRight {
+
+    0%,
+    100% {
+        transform: rotate(15deg);
+    }
+
+    50% {
+        transform: rotate(45deg);
+    }
+}
+
+/* Hover effect */
+.seagull.hovering .seagull-wing.left {
+    animation: hoverLeft 0.5s ease-in-out infinite;
+}
+
+.seagull.hovering .seagull-wing.right {
+    animation: hoverRight 0.5s ease-in-out infinite;
+}
+
+@keyframes hoverLeft {
+
+    0%,
+    100% {
+        transform: rotate(-30deg);
+    }
+
+    50% {
+        transform: rotate(-50deg);
+    }
+}
+
+@keyframes hoverRight {
+
+    0%,
+    100% {
+        transform: rotate(30deg);
+    }
+
+    50% {
+        transform: rotate(50deg);
+    }
+}
+
+/* Generic across-flight animation */
+@keyframes flyAcross {
+    0% {
+        transform: translateX(-200px) translateY(0) scaleX(var(--dir)) scale(var(--scale)) rotate(0deg);
+    }
+
+    25% {
+        transform: translateX(25vw) translateY(30px) scaleX(var(--dir)) scale(var(--scale)) rotate(5deg);
+    }
+
+    50% {
+        transform: translateX(50vw) translateY(0) scaleX(var(--dir)) scale(var(--scale)) rotate(0deg);
+    }
+
+    75% {
+        transform: translateX(75vw) translateY(-20px) scaleX(var(--dir)) scale(var(--scale)) rotate(-5deg);
+    }
+
+    100% {
+        transform: translateX(calc(100vw + 200px)) translateY(10px) scaleX(var(--dir)) scale(var(--scale)) rotate(0deg);
+    }
+}
+
+/* Specialized motions with orientation tweak */
+.seagull--1 {
+    --scale: 0.8;
+    --dir: -1;
+    top: 15%;
+    left: 10%;
+    animation: flyAcross 30s linear infinite;
+}
+
+.seagull--2 {
+    --scale: 1;
+    --dir: -1;
+    top: 25%;
+    left: 30%;
+    animation: flyAcross 40s linear infinite 5s;
+}
+
+.seagull--3 {
+    --scale: 0.9;
+    --dir: -1;
+    top: 10%;
+    left: 50%;
+    animation: flyCircle 35s linear infinite 8s;
+}
+
+.seagull--4 {
+    --scale: 0.7;
+    --dir: -1;
+    top: 30%;
+    left: 70%;
+    animation: flyAcross 28s linear infinite 12s;
+}
+
+.seagull--5 {
+    --scale: 0.75;
+    --dir: -1;
+    top: 20%;
+    left: 85%;
+    animation: flyBounce 32s ease-in-out infinite 15s;
+}
+
+.seagull--6 {
+    --scale: 0.85;
+    --dir: -1;
+    top: 8%;
+    left: 45%;
+    animation: flyDive 25s ease-in infinite 7s;
+}
+
+.seagull--7 {
+    --scale: 0.65;
+    --dir: -1;
+    top: 35%;
+    left: 15%;
+    animation: flyRise 38s ease-in-out infinite 20s;
+}
+
+/* Circle flight */
+@keyframes flyCircle {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scaleX(var(--dir)) scale(var(--scale)) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(100px, 50px) scaleX(var(--dir)) scale(var(--scale)) rotate(5deg);
+    }
+
+    50% {
+        transform: translate(0, 100px) scaleX(var(--dir)) scale(var(--scale)) rotate(0deg);
+    }
+
+    75% {
+        transform: translate(-100px, 50px) scaleX(var(--dir)) scale(var(--scale)) rotate(-5deg);
+    }
+}
+
+
+/* Bounce flight */
+@keyframes flyBounce {
+
+    0%,
+    100% {
+        transform: translateX(-200px) translateY(0) scaleX(var(--dir)) scale(var(--scale)) rotate(0deg);
+    }
+
+    25% {
+        transform: translateX(25vw) translateY(-40px) scaleX(var(--dir)) scale(var(--scale)) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateX(50vw) translateY(20px) scaleX(var(--dir)) scale(var(--scale)) rotate(5deg);
+    }
+
+    75% {
+        transform: translateX(75vw) translateY(-20px) scaleX(var(--dir)) scale(var(--scale)) rotate(-3deg);
+    }
+}
+
+/* Dive flight */
+@keyframes flyDive {
+    0% {
+        transform: translateX(-200px) translateY(0) scaleX(var(--dir)) scale(var(--scale)) rotate(0deg);
+    }
+
+    45% {
+        transform: translateX(45vw) translateY(0) scaleX(var(--dir)) scale(var(--scale)) rotate(0deg);
+    }
+
+    50% {
+        transform: translateX(50vw) translateY(100px) scaleX(var(--dir)) scale(var(--scale)) rotate(45deg);
+    }
+
+    55% {
+        transform: translateX(55vw) translateY(0) scaleX(var(--dir)) scale(var(--scale)) rotate(0deg);
+    }
+
+    100% {
+        transform: translateX(calc(100vw + 200px)) translateY(0) scaleX(var(--dir)) scale(var(--scale)) rotate(0deg);
+    }
+}
+
+/* Rise flight */
+@keyframes flyRise {
+    0% {
+        transform: translateX(200px) translateY(100px) scaleX(var(--dir)) scale(var(--scale)) rotate(0deg);
+    }
+
+    30% {
+        transform: translateX(30vw) translateY(0) scaleX(var(--dir)) scale(var(--scale)) rotate(0deg);
+    }
+
+    70% {
+        transform: translateX(70vw) translateY(-50px) scaleX(var(--dir)) scale(var(--scale)) rotate(0deg);
+    }
+
+    100% {
+        transform: translateX(calc(100vw + 200px)) translateY(0) scaleX(var(--dir)) scale(var(--scale)) rotate(0deg);
+    }
+}
