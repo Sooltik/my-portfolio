@@ -19,7 +19,6 @@
     overflow: hidden;
 }
 
-/* Cloud styles with enhanced random movements */
 .cloud {
     position: absolute;
     background: rgba(255, 255, 255, 0.8);
@@ -27,9 +26,9 @@
     opacity: 0.8;
     z-index: 1;
     filter: blur(3px);
+    will-change: transform;
 }
 
-/* Create cloud shape with pseudo-elements */
 .cloud::before,
 .cloud::after {
     content: '';
@@ -52,13 +51,14 @@
     right: 20%;
 }
 
-/* Individual cloud customization */
 .cloud--1 {
     top: 15%;
     left: 10%;
     width: 120px;
     height: 60px;
-    animation: moveCloud1 35s infinite alternate;
+    animation:
+        moveCloud1 45s ease-in-out infinite alternate,
+        floatCloud 15s ease-in-out infinite;
 }
 
 .cloud--2 {
@@ -66,7 +66,10 @@
     left: 60%;
     width: 180px;
     height: 90px;
-    animation: moveCloud2 42s infinite alternate;
+    animation:
+        moveCloud2 52s ease-in-out infinite alternate,
+        floatCloud 18s ease-in-out infinite reverse;
+    animation-delay: -5s;
 }
 
 .cloud--3 {
@@ -74,7 +77,10 @@
     left: 40%;
     width: 150px;
     height: 75px;
-    animation: moveCloud3 38s infinite alternate;
+    animation:
+        moveCloud3 48s ease-in-out infinite alternate,
+        floatCloud 12s ease-in-out infinite;
+    animation-delay: -10s;
 }
 
 .cloud--4 {
@@ -82,7 +88,10 @@
     left: 75%;
     width: 100px;
     height: 50px;
-    animation: moveCloud4 45s infinite alternate;
+    animation:
+        moveCloud4 55s ease-in-out infinite alternate,
+        floatCloud 14s ease-in-out infinite reverse;
+    animation-delay: -7s;
 }
 
 .cloud--5 {
@@ -90,7 +99,10 @@
     left: 25%;
     width: 80px;
     height: 40px;
-    animation: moveCloud5 40s infinite alternate;
+    animation:
+        moveCloud5 50s ease-in-out infinite alternate,
+        floatCloud 16s ease-in-out infinite;
+    animation-delay: -12s;
 }
 
 .cloud--6 {
@@ -98,7 +110,10 @@
     left: 80%;
     width: 140px;
     height: 70px;
-    animation: moveCloud6 47s infinite alternate;
+    animation:
+        moveCloud6 57s ease-in-out infinite alternate,
+        floatCloud 20s ease-in-out infinite reverse;
+    animation-delay: -8s;
 }
 
 /* Random cloud movement keyframes */
