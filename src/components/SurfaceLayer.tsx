@@ -17,10 +17,8 @@ const SurfaceLayer: React.FC = () => {
 
             <div className="layer-content">
                 <div className="island-container">
-                    {/* Island with palm trees */}
                     <div className="island">
                         <div className="island-top">
-                            {/* Profile elements moved inside the island-top */}
                             <div className="profile-container">
                                 <div className="profile-outline"></div>
                                 <img src="img/intro-pic.jpg" alt="Sultan Niazov" className="profile-pic" />
@@ -40,10 +38,8 @@ const SurfaceLayer: React.FC = () => {
                             </div>
                         </div>
 
-                        {/* Palm tree left */}
                         <div className="palm-tree left">
                             <div className="palm-trunk"></div>
-                            {/* Coconuts Added Here */}
                             <div className="coconut"></div>
                             <div className="coconut"></div>
                             <div className="palm-leaves">
@@ -56,10 +52,8 @@ const SurfaceLayer: React.FC = () => {
                             </div>
                         </div>
 
-                        {/* Palm tree right */}
                         <div className="palm-tree right">
                             <div className="palm-trunk"></div>
-                            {/* Coconuts Added Here */}
                             <div className="coconut"></div>
                             <div className="coconut"></div>
                             <div className="palm-leaves">
