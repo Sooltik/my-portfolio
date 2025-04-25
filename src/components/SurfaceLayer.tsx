@@ -1,6 +1,7 @@
 import React from 'react';
 import WaterCreatures from './WaterCreatures';
 import WaveDivider from './WaveDivider';
+import Seagulls from './Seagulls';
 import '../styles/SurfaceLayer.css';
 
 const SurfaceLayer: React.FC = () => {
@@ -13,6 +14,7 @@ const SurfaceLayer: React.FC = () => {
                 <div className="cloud cloud--4"></div>
                 <div className="cloud cloud--5"></div>
                 <div className="cloud cloud--6"></div>
+                <Seagulls />
             </div>
 
             <div className="layer-content">
