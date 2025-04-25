@@ -9,6 +9,8 @@ const ModerateLayer: React.FC = () => {
       <div className="seaweed"></div>
       <div className="seaweed"></div>
       <div className="seaweed"></div>
+      <div className="seaweed"></div>
+      <div className="seaweed"></div>
 
       <div className="layer-content">
         <h2 className="section__title">About Me</h2>
