@@ -26,6 +26,7 @@
   .wave-animation-delayed {
     animation: waveMove 15s linear infinite;
     animation-delay: -5s;
+    animation-direction: reverse;
   }
   
   @keyframes waveMove {
